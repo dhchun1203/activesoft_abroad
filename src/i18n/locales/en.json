@@ -85,6 +85,12 @@
     "products": "Products",
     "features": "Features",
     "contact": "Contact"
+  },
+  "footer": {
+    "description": "We provide professional solutions for HTML5 UI development.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "email": "Email"
   }
 }
 

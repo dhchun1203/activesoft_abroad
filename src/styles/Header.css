@@ -50,6 +50,9 @@
   font-weight: bold;
   color: var(--accent-color);
   white-space: nowrap;
+  font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  letter-spacing: normal;
+  font-variation-settings: normal;
 }
 
 .nav {

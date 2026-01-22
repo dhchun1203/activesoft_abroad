@@ -80,7 +80,7 @@
 
 .submit-btn {
   padding: 1rem 2rem;
-  background-color: var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 100%);
   color: white;
   border: none;
   border-radius: 8px;

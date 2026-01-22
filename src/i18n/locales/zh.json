@@ -85,6 +85,12 @@
     "products": "产品",
     "features": "功能",
     "contact": "联系"
+  },
+  "footer": {
+    "description": "我们为HTML5 UI开发提供专业解决方案。",
+    "quickLinks": "快速链接",
+    "contact": "联系方式",
+    "email": "电子邮件"
   }
 }
 

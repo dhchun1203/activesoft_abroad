@@ -6,6 +6,7 @@ import FeaturesSection from './components/FeaturesSection';
 import ContactSection from './components/ContactSection';
 import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
+import Footer from './components/Footer';
 import './styles/App.css';
 import './i18n/config';
 
@@ -21,9 +22,7 @@ function App() {
           <FeaturesSection />
           <ContactSection />
         </main>
-        <footer className="footer">
-          <p>&copy; 2024 ActiveSoft. All rights reserved.</p>
-        </footer>
+        <Footer />
         <ScrollToTop />
       </div>
     </DarkModeProvider>

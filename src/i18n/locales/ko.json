@@ -85,6 +85,12 @@
     "products": "제품",
     "features": "기능",
     "contact": "문의"
+  },
+  "footer": {
+    "description": "HTML5 UI 개발을 위한 전문 솔루션을 제공합니다.",
+    "quickLinks": "빠른 링크",
+    "contact": "연락처",
+    "email": "이메일"
   }
 }
 

@@ -85,6 +85,12 @@
     "products": "製品",
     "features": "機能",
     "contact": "お問い合わせ"
+  },
+  "footer": {
+    "description": "HTML5 UI開発のための専門ソリューションを提供します。",
+    "quickLinks": "クイックリンク",
+    "contact": "連絡先",
+    "email": "メール"
   }
 }
 

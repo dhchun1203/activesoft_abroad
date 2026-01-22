@@ -30,6 +30,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 html {
@@ -37,7 +41,7 @@ html {
 }
 
 body {
-  font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Pretendard Variable', 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,8 +50,11 @@ body {
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
-  font-feature-settings: 'kern' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   text-rendering: optimizeLegibility;
+  font-variation-settings: 'wght' 400;
+  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 
 @media (max-width: 480px) {
@@ -59,5 +66,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* 제목 스타일 개선 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Pretendard Variable', 'Pretendard', 'Inter', -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-variation-settings: 'wght' 700;
+}
+
+h1 {
+  font-weight: 800;
+  font-variation-settings: 'wght' 800;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-weight: 700;
+  font-variation-settings: 'wght' 700;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-weight: 600;
+  font-variation-settings: 'wght' 600;
+  letter-spacing: -0.015em;
+}
+
+/* 로고는 기존 폰트 유지 */
+.logo {
+  font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: bold;
+  letter-spacing: normal;
+  font-variation-settings: normal;
+}
+
+/* 강조 텍스트 */
+strong, b {
+  font-weight: 600;
+  font-variation-settings: 'wght' 600;
+}
+
+/* 버튼 텍스트 */
+button {
+  font-family: 'Pretendard Variable', 'Pretendard', 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  font-variation-settings: 'wght' 600;
+  letter-spacing: -0.01em;
 }
 

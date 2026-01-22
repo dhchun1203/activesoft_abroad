@@ -52,11 +52,12 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border-radius: 12px;
   border-left: 4px solid var(--accent-orange);
   transition: all 0.3s ease;
   position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .feature-item:hover {

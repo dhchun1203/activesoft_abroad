@@ -61,12 +61,18 @@
   height: 500px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px var(--shadow);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.08);
   background-color: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.dark .main-image-container {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .main-image {
@@ -137,6 +143,7 @@
 
   .main-image-container {
     height: 400px;
+    padding: 1.5rem 0.75rem;
   }
 
   .thumbnail-list {
@@ -171,6 +178,7 @@
   .main-image-container {
     height: 300px;
     border-radius: 8px;
+    padding: 1rem 0.5rem;
   }
 
   .thumbnail-list {
