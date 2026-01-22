@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "title": "HTML5 UI トータルソリューション",
+    "subtitle": "Webcrea（ウェブクレア）は、GUIベースで複雑な業務UIを簡単かつ迅速にHTML5で開発できるようにサポートするウェブUI制作ツールです。",
+    "cta": "詳細を見る"
+  },
+  "products": {
+    "title": "私たちの製品",
+    "subtitle": "最先端技術で構築された強力なソリューション"
+  },
+  "features": {
+    "title": "製品機能",
+    "subtitle": "ビジネスのための強力な機能",
+    "feature1": {
+      "title": "WYSIWYG開発方式",
+      "description": "WYSIWYG開発方式による簡単な開発環境（IDE）の提供"
+    },
+    "feature2": {
+      "title": "プラグイン不要、ダウンロード不要",
+      "description": "プラグインやダウンロードなしで実行可能な環境"
+    },
+    "feature3": {
+      "title": "ウェブ標準とウェブアクセシビリティ準拠",
+      "description": "Webcreaで開発されるUIはHTML5コードに変換され、ウェブ標準を準拠します"
+    },
+    "feature4": {
+      "title": "OSMU（ワンソースマルチユース）",
+      "description": "1つのソースで様々なプラットフォームで活用可能なマルチユースソリューション"
+    },
+    "feature5": {
+      "title": "HTML5コード変換",
+      "description": "複雑なウェブコーディングを最小化し、HTML5コードに自動変換"
+    },
+    "feature6": {
+      "title": "ビルトイン関数",
+      "description": "シンプルで直感的な内蔵関数を提供し、開発効率を最大化"
+    },
+    "feature7": {
+      "title": "外部ライブラリ連携",
+      "description": "外部Javascriptライブラリを登録して活用できるインターフェース環境を提供"
+    },
+    "feature8": {
+      "title": "データ暗号化",
+      "description": "RSAアルゴリズムを使用してサーバーに送信するデータを暗号化し、セキュリティを向上"
+    },
+    "feature9": {
+      "title": "Data Auto Binding",
+      "description": "取得されたレコードセットデータとオブジェクト間のバインディングが自動的に処理され、迅速な開発環境を提供"
+    },
+    "feature10": {
+      "title": "様々なコンポーネントとコマンド",
+      "description": "フォーム、グリッド、ツリー、メニューコントロール、タブ、チャート、バーコード、Excelエクスポート、ファイルアップロード/ダウンロードなどを提供されるコンポーネントとコマンドで簡単に実装"
+    },
+    "feature11": {
+      "title": "デバッグ",
+      "description": "IDEでスクリプトの行単位デバッグおよびトレース環境を提供"
+    },
+    "feature12": {
+      "title": "高速レンダリング",
+      "description": "多数のコントロールと大容量データ表現において、最適なエンジンアーキテクチャによる最高のパフォーマンスを確保"
+    },
+    "feature13": {
+      "title": "レコードセット加工",
+      "description": "UIレベルでデータを加工するレコードセットコマンドにより、便利にデータ処理"
+    }
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "ご質問がございましたら、お気軽にお問い合わせください",
+    "name": "お名前",
+    "email": "メールアドレス",
+    "message": "メッセージ",
+    "submit": "送信",
+    "namePlaceholder": "お名前を入力してください",
+    "emailPlaceholder": "メールアドレスを入力してください",
+    "messagePlaceholder": "メッセージを入力してください",
+    "successMessage": "メールクライアントが開きました。送信ボタンをクリックして完了してください。"
+  },
+  "language": "言語",
+  "darkMode": "ダークモード",
+  "menu": "メニュー",
+  "close": "閉じる",
+  "nav": {
+    "home": "ホーム",
+    "products": "製品",
+    "features": "機能",
+    "contact": "お問い合わせ"
+  }
+}
+

@@ -1,0 +1,176 @@
+.language-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+.language-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-primary);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  min-width: 320px;
+  max-width: calc(90vw - 40px);
+  max-height: calc(100vh - 40px);
+  overflow: hidden;
+  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  /* Ensure modal stays within viewport */
+  margin: 20px;
+  /* Smooth transitions for position adjustments */
+  will-change: transform, top;
+}
+
+.language-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.language-modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.language-modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.language-modal-close:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transform: rotate(90deg);
+}
+
+.language-modal-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.language-option:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--accent-orange);
+  transform: translateX(5px);
+}
+
+.language-option.active {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(227, 76, 38, 0.1) 100%);
+  border-color: var(--accent-orange);
+  font-weight: 600;
+}
+
+.language-flag {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.language-name {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.language-check {
+  color: var(--accent-orange);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .language-modal {
+    min-width: 280px;
+    max-width: 85vw;
+  }
+
+  .language-modal-header {
+    padding: 1.25rem;
+  }
+
+  .language-modal-title {
+    font-size: 1.1rem;
+  }
+
+  .language-modal-content {
+    padding: 0.75rem;
+  }
+
+  .language-option {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+
+  .language-flag {
+    font-size: 1.25rem;
+  }
+}
+

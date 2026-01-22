@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "title": "HTML5 UI 全面解决方案",
+    "subtitle": "Webcrea（网页创建）是一款基于GUI的网页UI制作工具，可轻松快速地通过HTML5开发复杂的业务UI。",
+    "cta": "了解更多"
+  },
+  "products": {
+    "title": "我们的产品",
+    "subtitle": "采用尖端技术构建的强大解决方案"
+  },
+  "features": {
+    "title": "产品功能",
+    "subtitle": "为您的业务提供的强大功能",
+    "feature1": {
+      "title": "WYSIWYG 开发方式",
+      "description": "通过 WYSIWYG 开发方式提供易于使用的开发环境（IDE）"
+    },
+    "feature2": {
+      "title": "无需插件，无需下载",
+      "description": "无需插件或下载即可运行的执行环境"
+    },
+    "feature3": {
+      "title": "网页标准与网页可访问性",
+      "description": "使用 Webcrea 开发的 UI 会转换为 HTML5 代码，确保遵守网页标准"
+    },
+    "feature4": {
+      "title": "OSMU（一源多用）",
+      "description": "一个源代码可在多个平台上使用的多用途解决方案"
+    },
+    "feature5": {
+      "title": "HTML5 代码转换",
+      "description": "最小化复杂的网页编码，自动转换为 HTML5 代码"
+    },
+    "feature6": {
+      "title": "内置函数",
+      "description": "提供简单直观的内置函数，最大化开发效率"
+    },
+    "feature7": {
+      "title": "外部库集成",
+      "description": "提供接口环境，可注册并利用外部 Javascript 库"
+    },
+    "feature8": {
+      "title": "数据加密",
+      "description": "使用 RSA 算法加密传输到服务器的数据，提高安全性"
+    },
+    "feature9": {
+      "title": "数据自动绑定",
+      "description": "查询的记录集数据与对象之间的绑定自动处理，提供快速开发环境"
+    },
+    "feature10": {
+      "title": "各种组件和命令",
+      "description": "使用提供的组件和命令轻松实现表单、网格、树、菜单控件、选项卡、图表、条形码、Excel 导出、文件上传/下载"
+    },
+    "feature11": {
+      "title": "调试",
+      "description": "在 IDE 中提供脚本逐行调试和跟踪环境"
+    },
+    "feature12": {
+      "title": "快速渲染",
+      "description": "通过最佳引擎架构实现多个控件和大容量数据表示的最佳性能"
+    },
+    "feature13": {
+      "title": "记录集处理",
+      "description": "通过记录集命令在 UI 级别方便地处理数据"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "如有任何问题，请随时与我们联系",
+    "name": "姓名",
+    "email": "电子邮件",
+    "message": "消息",
+    "submit": "发送",
+    "namePlaceholder": "请输入您的姓名",
+    "emailPlaceholder": "请输入您的电子邮件",
+    "messagePlaceholder": "请输入您的消息",
+    "successMessage": "已打开电子邮件客户端。请点击发送以完成。"
+  },
+  "language": "语言",
+  "darkMode": "深色模式",
+  "menu": "菜单",
+  "close": "关闭",
+  "nav": {
+    "home": "首页",
+    "products": "产品",
+    "features": "功能",
+    "contact": "联系"
+  }
+}
+

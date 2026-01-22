@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Worker 제거</title>
+</head>
+<body>
+    <h1>Service Worker 제거 중...</h1>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister().then(function(success) {
+                        if (success) {
+                            console.log('Service Worker가 성공적으로 제거되었습니다.');
+                            document.body.innerHTML += '<p style="color: green;">Service Worker가 성공적으로 제거되었습니다.</p>';
+                        }
+                    });
+                }
+                if (registrations.length === 0) {
+                    document.body.innerHTML += '<p>등록된 Service Worker가 없습니다.</p>';
+                }
+            });
+        } else {
+            document.body.innerHTML += '<p>이 브라우저는 Service Worker를 지원하지 않습니다.</p>';
+        }
+    </script>
+</body>
+</html>

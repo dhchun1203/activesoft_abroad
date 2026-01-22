@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "title": "HTML5 UI TOTAL SOLUTION",
+    "subtitle": "Webcrea is a web UI development tool that enables easy and rapid HTML5 development of complex business UIs through a GUI-based approach.",
+    "cta": "Learn More"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Powerful solutions built with cutting-edge technology"
+  },
+  "features": {
+    "title": "Product Features",
+    "subtitle": "Powerful features for your business",
+    "feature1": {
+      "title": "WYSIWYG Development",
+      "description": "Easy development environment (IDE) through WYSIWYG development method"
+    },
+    "feature2": {
+      "title": "No Plug-in, No Download",
+      "description": "Execution environment without plugins or downloads"
+    },
+    "feature3": {
+      "title": "Web Standards & Accessibility",
+      "description": "UIs developed with Webcrea are converted to HTML5 code, ensuring web standards compliance"
+    },
+    "feature4": {
+      "title": "OSMU (One Source Multi Use)",
+      "description": "Multi-use solution that can be utilized across various platforms from a single source"
+    },
+    "feature5": {
+      "title": "HTML5 Code Conversion",
+      "description": "Minimize complex web coding with automatic conversion to HTML5 code"
+    },
+    "feature6": {
+      "title": "Built-in Function",
+      "description": "Simple and intuitive built-in functions to maximize development efficiency"
+    },
+    "feature7": {
+      "title": "External Library Integration",
+      "description": "Interface environment to register and utilize external Javascript libraries"
+    },
+    "feature8": {
+      "title": "Data Encryption",
+      "description": "Enhanced security by encrypting data transmitted to servers using RSA algorithm"
+    },
+    "feature9": {
+      "title": "Data Auto Binding",
+      "description": "Automatic binding between retrieved recordset data and objects for rapid development environment"
+    },
+    "feature10": {
+      "title": "Various Components & Commands",
+      "description": "Easy implementation of forms, grids, trees, menu controls, tabs, charts, barcodes, Excel Export, file upload/download using provided components and commands"
+    },
+    "feature11": {
+      "title": "Debugging",
+      "description": "Line-by-line script debugging and trace environment in IDE"
+    },
+    "feature12": {
+      "title": "Fast Rendering",
+      "description": "Optimal performance through best-in-class engine architecture for multiple controls and large-capacity data representation"
+    },
+    "feature13": {
+      "title": "Recordset Processing",
+      "description": "Convenient data processing through recordset commands for data manipulation at UI level"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Feel free to contact us if you have any questions",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "messagePlaceholder": "Enter your message",
+    "successMessage": "Your email client has been opened. Please click send to complete."
+  },
+  "language": "Language",
+  "darkMode": "Dark Mode",
+  "menu": "Menu",
+  "close": "Close",
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "features": "Features",
+    "contact": "Contact"
+  }
+}
+

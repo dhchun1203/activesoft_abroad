@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ActiveSoft - HTML5 UI TOTAL SOLUTION</title>
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #fff5f0;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --accent-color: #FF6B35;
+      --accent-orange: #FF6B35;
+      --accent-red: #E34C26;
+      --accent-yellow: #F7DF1E;
+      --accent-blue: #264DE4;
+      --border-color: #ffe0d0;
+      --shadow: rgba(255, 107, 53, 0.15);
+    }
+
+    .dark {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d1f1a;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --accent-color: #FF8C42;
+      --accent-orange: #FF8C42;
+      --accent-red: #FF6B6B;
+      --accent-yellow: #FFD93D;
+      --accent-blue: #4A90E2;
+      --border-color: #4a2f20;
+      --shadow: rgba(255, 140, 66, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+    }
+
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .language-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .language-select {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--border-color);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.7rem center;
+      padding-right: 2.5rem;
+    }
+
+    .dark .language-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    }
+
+    .language-select:hover {
+      border-color: var(--accent-color);
+    }
+
+    .language-select:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+    }
+
+    .dark-mode-toggle-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .dark-mode-toggle-label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .dark-mode-toggle-label:hover {
+      background-color: var(--bg-secondary);
+    }
+
+    .dark-mode-toggle-input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .dark-mode-toggle-slider {
+      position: relative;
+      width: 56px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 100%);
+      border-radius: 28px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .dark-mode-toggle-input:not(:checked) + .dark-mode-toggle-slider {
+      background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+    }
+
+    .dark-mode-toggle-slider::before {
+      content: '';
+      position: absolute;
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 3;
+    }
+
+    .dark-mode-toggle-input:checked + .dark-mode-toggle-slider::before {
+      transform: translateY(-50%) translateX(28px);
+    }
+
+    .dark-mode-toggle-icon {
+      position: absolute;
+      font-size: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      line-height: 1;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    .dark-mode-toggle-icon.dark-icon {
+      left: 7px;
+      opacity: 1;
+    }
+
+    .dark-mode-toggle-icon.light-icon {
+      right: 7px;
+      opacity: 0;
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .dark-mode-toggle-input:checked + .dark-mode-toggle-slider .dark-icon {
+      opacity: 0;
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    .dark-mode-toggle-input:checked + .dark-mode-toggle-slider .light-icon {
+      opacity: 1;
+      transform: translateY(-50%) rotate(0deg);
+    }
+
+    .dark-mode-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+      user-select: none;
+    }
+
+    .dark-mode-toggle-label:hover .dark-mode-text {
+      color: var(--text-primary);
+    }
+
+    .dark-mode-toggle-label:hover .dark-mode-toggle-slider {
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 50%, var(--accent-yellow) 100%);
+      color: white;
+      padding: 8rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-cta {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      background-color: white;
+      color: var(--accent-color);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Product Section */
+    .product-section {
+      padding: 5rem 2rem;
+      background-color: var(--bg-primary);
+    }
+
+    .product-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 50%, var(--accent-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+    }
+
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .main-image-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      background-color: var(--bg-secondary);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .thumbnail-list {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .thumbnail-item {
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+      background-color: var(--bg-secondary);
+    }
+
+    .thumbnail-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .thumbnail-item.active {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px var(--accent-color);
+    }
+
+    .thumbnail-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 5rem 2rem;
+      background-color: var(--bg-secondary);
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-container .section-title {
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 50%, var(--accent-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background-color: var(--bg-primary);
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-orange);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .feature-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px var(--shadow);
+      border-left-color: var(--accent-red);
+    }
+
+    .feature-number {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--accent-orange);
+      opacity: 0.5;
+    }
+
+    .feature-icon-wrapper {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 100%);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .feature-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .feature-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 2rem;
+      background-color: var(--bg-primary);
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-container .section-title {
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 50%, var(--accent-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .contact-form {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.875rem;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      padding: 1rem 2rem;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-orange) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--bg-secondary);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .header-container {
+        padding: 0 1.5rem;
+      }
+      .nav {
+        gap: 1rem;
+      }
+      .hero-section {
+        padding: 6rem 2rem;
+      }
+      .hero-title {
+        font-size: 3rem;
+      }
+      .features-list {
+        gap: 1.25rem;
+      }
+      .feature-item {
+        padding: 1.25rem;
+      }
+      .feature-icon-wrapper {
+        width: 50px;
+        height: 50px;
+      }
+      .feature-icon {
+        font-size: 1.75rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+        gap: 0.75rem;
+      }
+      .logo {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .nav {
+        gap: 0.75rem;
+        flex-shrink: 1;
+        min-width: 0;
+      }
+      .language-label {
+        font-size: 0.75rem;
+        display: none;
+      }
+      .language-select {
+        font-size: 0.75rem;
+        padding: 0.35rem 1.75rem 0.35rem 0.6rem;
+        min-width: 90px;
+        max-width: 100px;
+      }
+      .dark-mode-text {
+        font-size: 0.75rem;
+        display: none;
+      }
+      .dark-mode-toggle-label {
+        gap: 0.5rem;
+        padding: 0.35rem;
+      }
+      .dark-mode-toggle-slider {
+        width: 44px;
+        height: 24px;
+      }
+      .dark-mode-toggle-slider::before {
+        height: 18px;
+        width: 18px;
+      }
+      .dark-mode-toggle-input:checked + .dark-mode-toggle-slider::before {
+        transform: translateY(-50%) translateX(20px);
+      }
+      .hero-section {
+        padding: 4rem 1.5rem;
+      }
+      .hero-title {
+        font-size: 2.25rem;
+        line-height: 1.2;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .hero-cta {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+      }
+      .features-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .feature-item {
+        padding: 1.25rem;
+      }
+      .feature-icon-wrapper {
+        width: 50px;
+        height: 50px;
+      }
+      .feature-icon {
+        font-size: 1.5rem;
+      }
+      .feature-title {
+        font-size: 1.1rem;
+      }
+      .feature-description {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      html {
+        font-size: 14px;
+      }
+      .header-container {
+        padding: 0 0.75rem;
+        gap: 0.5rem;
+      }
+      .logo {
+        font-size: 1rem;
+      }
+      .nav {
+        gap: 0.5rem;
+      }
+      .language-select {
+        font-size: 0.7rem;
+        padding: 0.3rem 1.5rem 0.3rem 0.5rem;
+        min-width: 75px;
+        max-width: 85px;
+      }
+      .dark-mode-toggle-slider {
+        width: 40px;
+        height: 22px;
+      }
+      .dark-mode-toggle-slider::before {
+        height: 16px;
+        width: 16px;
+      }
+      .dark-mode-toggle-input:checked + .dark-mode-toggle-slider::before {
+        transform: translateY(-50%) translateX(18px);
+      }
+      .hero-section {
+        padding: 3rem 1rem;
+      }
+      .hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+      }
+      .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero-cta {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+      }
+      .features-list {
+        gap: 0.875rem;
+        margin-top: 1.5rem;
+      }
+      .feature-item {
+        padding: 1rem;
+        gap: 0.75rem;
+      }
+      .feature-number {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.75rem;
+      }
+      .feature-icon-wrapper {
+        width: 45px;
+        height: 45px;
+      }
+      .feature-icon {
+        font-size: 1.25rem;
+      }
+      .feature-title {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+      .feature-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-container">
+        <div class="logo">ActiveSoft</div>
+        <nav class="nav">
+          <div class="dark-mode-toggle-container" title="다크 모드">
+            <label class="dark-mode-toggle-label">
+              <input
+                type="checkbox"
+                class="dark-mode-toggle-input"
+                id="darkModeToggle"
+                aria-label="다크 모드"
+              />
+              <span class="dark-mode-toggle-slider">
+                <span class="dark-mode-toggle-icon dark-icon">🌙</span>
+                <span class="dark-mode-toggle-icon light-icon">☀️</span>
+              </span>
+              <span class="dark-mode-text">다크 모드</span>
+            </label>
+          </div>
+          <div class="language-selector">
+            <label for="language-select" class="language-label">언어:</label>
+            <select id="language-select" class="language-select">
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+              <option value="zh">中文</option>
+              <option value="ja">日本語</option>
+            </select>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">HTML5 UI TOTAL SOLUTION</h1>
+          <p class="hero-subtitle">Webcrea(웹크레아)는 복잡한 업무 UI를 GUI 기반으로 쉽고 빠르게 HTML5로 개발 할 수 있도록 지원하는 웹 UI 제작 도구 입니다.</p>
+          <button class="hero-cta">더 알아보기</button>
+        </div>
+      </section>
+
+      <section class="product-section">
+        <div class="product-container">
+          <h2 class="section-title">우리의 제품</h2>
+          <p class="section-subtitle">최신 기술로 구현된 강력한 솔루션들</p>
+          
+          <div class="product-gallery">
+            <div class="main-image-container">
+              <img
+                id="mainImage"
+                src="https://via.placeholder.com/800x500/FF6B35/FFFFFF?text=Product+Image+1"
+                alt="Product Image 1"
+                class="main-image"
+              />
+            </div>
+            
+            <div class="thumbnail-list">
+              <div class="thumbnail-item active" onclick="changeImage(0)">
+                <img
+                  src="https://via.placeholder.com/800x500/FF6B35/FFFFFF?text=Product+Image+1"
+                  alt="Thumbnail 1"
+                  class="thumbnail-image"
+                />
+              </div>
+              <div class="thumbnail-item" onclick="changeImage(1)">
+                <img
+                  src="https://via.placeholder.com/800x500/E34C26/FFFFFF?text=Product+Image+2"
+                  alt="Thumbnail 2"
+                  class="thumbnail-image"
+                />
+              </div>
+              <div class="thumbnail-item" onclick="changeImage(2)">
+                <img
+                  src="https://via.placeholder.com/800x500/F7DF1E/000000?text=Product+Image+3"
+                  alt="Thumbnail 3"
+                  class="thumbnail-image"
+                />
+              </div>
+              <div class="thumbnail-item" onclick="changeImage(3)">
+                <img
+                  src="https://via.placeholder.com/800x500/264DE4/FFFFFF?text=Product+Image+4"
+                  alt="Thumbnail 4"
+                  class="thumbnail-image"
+                />
+              </div>
+              <div class="thumbnail-item" onclick="changeImage(4)">
+                <img
+                  src="https://via.placeholder.com/800x500/9B59B6/FFFFFF?text=Product+Image+5"
+                  alt="Thumbnail 5"
+                  class="thumbnail-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-section">
+        <div class="features-container">
+          <h2 class="section-title">제품 기능</h2>
+          <p class="section-subtitle">당신의 비즈니스를 위한 강력한 기능들</p>
+          
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-number">01</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">💻</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">WYSIWYG 개발방식</h3>
+                <p class="feature-description">WYSIWYG 개발방식을 통한 손쉬운 개발환경(IDE) 제공</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">02</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🌐</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">No Plug-in, No Download</h3>
+                <p class="feature-description">플러그인이나 다운로드 없이 바로 실행 가능한 환경 제공</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">03</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">♿</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">웹 표준과 웹 접근성 준수</h3>
+                <p class="feature-description">Webcrea로 개발되는 UI는 HTML5 코드로 변환되어 웹 표준을 준수합니다</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">04</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🔄</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">OSMU (One Source Multi Use)</h3>
+                <p class="feature-description">하나의 소스로 다양한 플랫폼에서 활용 가능한 멀티 유즈 솔루션</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">05</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">📝</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">HTML5 코드 변환</h3>
+                <p class="feature-description">복잡한 웹 코딩을 최소화하여 HTML5 코드로 자동 변환</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">06</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🛠️</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">Built-in Function</h3>
+                <p class="feature-description">단순하고 직관적인 내장 함수 제공으로 개발 효율성 극대화</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">07</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🔗</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">외부 라이브러리 연동</h3>
+                <p class="feature-description">외부 Javascript 라이브러리를 등록하여 활용할 수 있도록 인터페이스 환경 제공</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">08</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🔒</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">데이터 암호화</h3>
+                <p class="feature-description">RSA 알고리즘을 사용하여 서버로 전송하는 데이터를 암호화 하여 보안성 향상</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">09</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">⚡</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">Data Auto Binding</h3>
+                <p class="feature-description">조회된 레코드셋 데이터와 개체간 바인딩이 자동으로 처리되어 빠른 개발 환경 제공</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">10</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">📊</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">다양한 컴포넌트 및 명령어</h3>
+                <p class="feature-description">폼, 그리드, 트리, 메뉴 컨트롤, 탭, 차트, 바코드, 엑셀 Export, 파일 업/다운로드 등을 제공되는 컴포넌트와 명령어로 쉽게 구현</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">11</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🐛</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">Debugging</h3>
+                <p class="feature-description">IDE에서 스크립트 라인 단위 디버깅 및 트레이스 환경 제공</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">12</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">🚀</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">빠른 렌더링</h3>
+                <p class="feature-description">다수의 컨트롤과 대용량 데이터 표현에 있어 최적의 엔진 아키텍처를 통한 최상의 퍼포먼스 확보</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-number">13</div>
+              <div class="feature-icon-wrapper">
+                <div class="feature-icon">📋</div>
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">레코드셋 가공</h3>
+                <p class="feature-description">UI 레벨에서 데이터를 가공하는 레코드셋 명령어를 통해 편리하게 데이터 처리</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <div class="contact-container">
+          <h2 class="section-title">문의하기</h2>
+          <p class="section-subtitle">궁금한 점이 있으시면 언제든지 연락주세요</p>
+          
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">이름</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="이름을 입력하세요"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="이메일을 입력하세요"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="message">메시지</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="메시지를 입력하세요"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">보내기</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 ActiveSoft. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    if (savedDarkMode) {
+      document.documentElement.classList.add('dark');
+      darkModeToggle.checked = true;
+    }
+
+    darkModeToggle.addEventListener('change', function() {
+      if (this.checked) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkMode', 'false');
+      }
+    });
+
+    // Image Gallery
+    const images = [
+      'https://via.placeholder.com/800x500/FF6B35/FFFFFF?text=Product+Image+1',
+      'https://via.placeholder.com/800x500/E34C26/FFFFFF?text=Product+Image+2',
+      'https://via.placeholder.com/800x500/F7DF1E/000000?text=Product+Image+3',
+      'https://via.placeholder.com/800x500/264DE4/FFFFFF?text=Product+Image+4',
+      'https://via.placeholder.com/800x500/9B59B6/FFFFFF?text=Product+Image+5'
+    ];
+
+    function changeImage(index) {
+      const mainImage = document.getElementById('mainImage');
+      mainImage.src = images[index];
+      mainImage.alt = `Product Image ${index + 1}`;
+      
+      // Update active thumbnail
+      const thumbnails = document.querySelectorAll('.thumbnail-item');
+      thumbnails.forEach((thumb, i) => {
+        if (i === index) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+    }
+
+    // Form Submit
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert('메시지가 전송되었습니다!');
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "title": "HTML5 UI TOTAL SOLUTION",
+    "subtitle": "Webcrea(웹크레아)는 복잡한 업무 UI를 GUI 기반으로 쉽고 빠르게 HTML5로 개발 할 수 있도록 지원하는 웹 UI 제작 도구 입니다.",
+    "cta": "더 알아보기"
+  },
+  "products": {
+    "title": "우리의 제품",
+    "subtitle": "최신 기술로 구현된 강력한 솔루션들"
+  },
+  "features": {
+    "title": "제품 기능",
+    "subtitle": "당신의 비즈니스를 위한 강력한 기능들",
+    "feature1": {
+      "title": "WYSIWYG 개발방식",
+      "description": "WYSIWYG 개발방식을 통한 손쉬운 개발환경(IDE) 제공"
+    },
+    "feature2": {
+      "title": "No Plug-in, No Download",
+      "description": "플러그인이나 다운로드 없이 바로 실행 가능한 환경 제공"
+    },
+    "feature3": {
+      "title": "웹 표준과 웹 접근성 준수",
+      "description": "Webcrea로 개발되는 UI는 HTML5 코드로 변환되어 웹 표준을 준수합니다"
+    },
+    "feature4": {
+      "title": "OSMU (One Source Multi Use)",
+      "description": "하나의 소스로 다양한 플랫폼에서 활용 가능한 멀티 유즈 솔루션"
+    },
+    "feature5": {
+      "title": "HTML5 코드 변환",
+      "description": "복잡한 웹 코딩을 최소화하여 HTML5 코드로 자동 변환"
+    },
+    "feature6": {
+      "title": "Built-in Function",
+      "description": "단순하고 직관적인 내장 함수 제공으로 개발 효율성 극대화"
+    },
+    "feature7": {
+      "title": "외부 라이브러리 연동",
+      "description": "외부 Javascript 라이브러리를 등록하여 활용할 수 있도록 인터페이스 환경 제공"
+    },
+    "feature8": {
+      "title": "데이터 암호화",
+      "description": "RSA 알고리즘을 사용하여 서버로 전송하는 데이터를 암호화 하여 보안성 향상"
+    },
+    "feature9": {
+      "title": "Data Auto Binding",
+      "description": "조회된 레코드셋 데이터와 개체간 바인딩이 자동으로 처리되어 빠른 개발 환경 제공"
+    },
+    "feature10": {
+      "title": "다양한 컴포넌트 및 명령어",
+      "description": "폼, 그리드, 트리, 메뉴 컨트롤, 탭, 차트, 바코드, 엑셀 Export, 파일 업/다운로드 등을 제공되는 컴포넌트와 명령어로 쉽게 구현"
+    },
+    "feature11": {
+      "title": "Debugging",
+      "description": "IDE에서 스크립트 라인 단위 디버깅 및 트레이스 환경 제공"
+    },
+    "feature12": {
+      "title": "빠른 렌더링",
+      "description": "다수의 컨트롤과 대용량 데이터 표현에 있어 최적의 엔진 아키텍처를 통한 최상의 퍼포먼스 확보"
+    },
+    "feature13": {
+      "title": "레코드셋 가공",
+      "description": "UI 레벨에서 데이터를 가공하는 레코드셋 명령어를 통해 편리하게 데이터 처리"
+    }
+  },
+  "contact": {
+    "title": "문의하기",
+    "subtitle": "궁금한 점이 있으시면 언제든지 연락주세요",
+    "name": "이름",
+    "email": "이메일",
+    "message": "메시지",
+    "submit": "보내기",
+    "namePlaceholder": "이름을 입력하세요",
+    "emailPlaceholder": "이메일을 입력하세요",
+    "messagePlaceholder": "메시지를 입력하세요",
+    "successMessage": "이메일 클라이언트가 열렸습니다. 전송 버튼을 눌러주세요."
+  },
+  "language": "언어",
+  "darkMode": "다크 모드",
+  "menu": "메뉴",
+  "close": "닫기",
+  "nav": {
+    "home": "홈",
+    "products": "제품",
+    "features": "기능",
+    "contact": "문의"
+  }
+}
+
