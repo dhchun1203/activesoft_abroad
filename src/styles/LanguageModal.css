@@ -94,6 +94,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 1rem;
+  font-weight: 300;
   text-align: left;
   width: 100%;
 }
@@ -107,7 +108,7 @@
 .language-option.active {
   background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(227, 76, 38, 0.1) 100%);
   border-color: var(--accent-orange);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .language-flag {
@@ -118,6 +119,7 @@
 .language-name {
   flex: 1;
   color: var(--text-primary);
+  font-weight: 300;
 }
 
 .language-check {

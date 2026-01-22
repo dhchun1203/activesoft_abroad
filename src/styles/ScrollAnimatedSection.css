@@ -1,16 +1,20 @@
 .scroll-animated {
   opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .scroll-animated.animate-fadeUp {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translate3d(0, 30px, 0);
 }
 
 .scroll-animated.animate-fadeUp.animate-fadeUp {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
 .scroll-animated.animate-fadeIn {
@@ -19,24 +23,27 @@
 
 .scroll-animated.animate-fadeIn.animate-fadeIn {
   opacity: 1;
+  will-change: auto;
 }
 
 .scroll-animated.animate-slideLeft {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translate3d(50px, 0, 0);
 }
 
 .scroll-animated.animate-slideLeft.animate-slideLeft {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
 .scroll-animated.animate-slideRight {
   opacity: 0;
-  transform: translateX(-50px);
+  transform: translate3d(-50px, 0, 0);
 }
 
 .scroll-animated.animate-slideRight.animate-slideRight {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
