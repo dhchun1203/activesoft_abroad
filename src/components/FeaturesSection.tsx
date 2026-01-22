@@ -36,16 +36,13 @@ const FeaturesSection: FC = () => {
         <div ref={listRef} className={`features-list scroll-fade-up ${listVisible ? 'visible' : ''}`}>
           {FEATURES.map((feature, index) => (
             <div key={feature.key} className="feature-item" style={{ animationDelay: `${index * 50}ms` }}>
-              <div className="feature-number">{String(index + 1).padStart(2, '0')}</div>
               <div className="feature-icon-wrapper">
                 <div className="feature-icon">{feature.icon}</div>
               </div>
-              <div className="feature-content">
-                <h3 className="feature-title">{t(`features.${feature.key}.title`)}</h3>
-                <p className="feature-description">
-                  {t(`features.${feature.key}.description`)}
-                </p>
-              </div>
+              <h3 className="feature-title">{t(`features.${feature.key}.title`)}</h3>
+              <p className="feature-description">
+                {t(`features.${feature.key}.description`)}
+              </p>
             </div>
           ))}
         </div>

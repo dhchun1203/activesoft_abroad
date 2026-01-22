@@ -6,7 +6,36 @@
   },
   "products": {
     "title": "Our Products",
-    "subtitle": "Powerful solutions built with cutting-edge technology"
+    "subtitle": "Powerful solutions built with cutting-edge technology",
+    "categories": {
+      "category1": "Solution 1",
+      "category2": "Solution 2",
+      "category3": "Solution 3",
+      "category4": "Solution 4",
+      "category5": "Solution 5"
+    },
+    "descriptions": {
+      "category1": {
+        "title": "HTML5 UI Development Solution",
+        "description": "A professional solution that enables easy and rapid HTML5 development of complex business UIs through a GUI-based approach. Create web applications with an intuitive interface through WYSIWYG development methods, even without coding knowledge."
+      },
+      "category2": {
+        "title": "Web Standards Compliant Solution",
+        "description": "A web standards-based solution compatible with all platforms and browsers. It can run immediately without plugins or additional downloads and automatically supports responsive design."
+      },
+      "category3": {
+        "title": "Rapid Development Environment",
+        "description": "Quickly implement forms, grids, charts, and more using built-in components and commands. Significantly reduce development time with automatic data binding capabilities."
+      },
+      "category4": {
+        "title": "Enhanced Security Solution",
+        "description": "Security is strengthened through data encryption using the RSA algorithm. All communications with servers are encrypted, enabling secure data transmission and management."
+      },
+      "category5": {
+        "title": "High-Performance Rendering Engine",
+        "description": "Rapidly render multiple controls and large-scale data with an optimized engine architecture. Efficiently handle complex business logic without compromising user experience."
+      }
+    }
   },
   "features": {
     "title": "Product Features",
