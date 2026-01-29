@@ -81,10 +81,8 @@ const ProductSection: FC = () => {
   const [activeTab, setActiveTab] = useState<string>(PRODUCT_CATEGORIES[0]);
   const [selectedMedia, setSelectedMedia] = useState(0);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
-  const videoContainerRef = useRef<HTMLDivElement>(null);
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation({ triggerOnce: true });
   const { elementRef: galleryRef, isVisible: galleryVisible } = useScrollAnimation({ triggerOnce: true, threshold: 0.2 });
 
@@ -114,44 +112,42 @@ const ProductSection: FC = () => {
     };
   }, [currentMediaItem]);
 
-  // 탭 컨테이너 스크롤을 좌측 처음으로 초기화
+  // 탭 컨테이너 스크롤을 활성 탭이 보이도록 조정 (모바일에서만)
   useEffect(() => {
-    if (tabsContainerRef.current) {
+    if (!tabsContainerRef.current) return;
+    
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) {
+      // 데스크톱에서는 스크롤을 처음으로
       tabsContainerRef.current.scrollLeft = 0;
-    }
-  }, [activeTab]);
-
-  // 비디오 지연 로딩 - 뷰포트에 들어올 때만 로드
-  useEffect(() => {
-    if (!videoContainerRef.current || currentMediaItem?.type !== 'video') {
-      setShouldLoadVideo(false);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShouldLoadVideo(true);
-            observer.disconnect();
-          }
+    // 모바일에서는 활성 탭이 보이도록 스크롤 조정
+    const activeTabElement = tabsContainerRef.current.querySelector('.product-tab.active') as HTMLElement;
+    if (activeTabElement) {
+      const containerRect = tabsContainerRef.current.getBoundingClientRect();
+      const tabRect = activeTabElement.getBoundingClientRect();
+      const scrollLeft = tabsContainerRef.current.scrollLeft;
+      
+      // 탭이 컨테이너 왼쪽 밖에 있으면
+      if (tabRect.left < containerRect.left) {
+        const targetScroll = scrollLeft + (tabRect.left - containerRect.left) - 16; // 16px 여백
+        tabsContainerRef.current.scrollTo({
+          left: Math.max(0, targetScroll),
+          behavior: 'smooth'
         });
-      },
-      {
-        rootMargin: '50px', // 뷰포트 50px 전에 미리 로드
-        threshold: 0.1,
       }
-    );
-
-    observer.observe(videoContainerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [currentMediaItem, activeTab, selectedMedia]);
-
-  // 모바일 감지
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+      // 탭이 컨테이너 오른쪽 밖에 있으면
+      else if (tabRect.right > containerRect.right) {
+        const targetScroll = scrollLeft + (tabRect.right - containerRect.right) + 16; // 16px 여백
+        tabsContainerRef.current.scrollTo({
+          left: targetScroll,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [activeTab]);
 
   const handleTabChange = useCallback((category: string) => {
     setActiveTab(category);
@@ -214,10 +210,7 @@ const ProductSection: FC = () => {
             </div>
             {currentMediaItem && (
               <div className="media-wrapper">
-                <div 
-                  ref={videoContainerRef}
-                  className={`main-image-container ${currentMediaItem.type === 'video' ? 'video-container' : ''}`}
-                >
+                <div className={`main-image-container ${currentMediaItem.type === 'video' ? 'video-container' : ''}`}>
                   {hasMultipleMedia && (
                     <button
                       className="media-nav-button media-nav-prev"
@@ -228,28 +221,21 @@ const ProductSection: FC = () => {
                     </button>
                   )}
                   {currentMediaItem.type === 'video' ? (
-                    shouldLoadVideo ? (
-                      <video
-                        ref={videoRef}
-                        src={currentMediaItem.src}
-                        className="main-image"
-                        controls
-                        autoPlay={!isMobile}
-                        loop
-                        muted
-                        playsInline
-                        preload={isMobile ? 'metadata' : 'auto'}
-                        key={`${activeTab}-${selectedMedia}`}
-                        style={{ maxWidth: '100%', maxHeight: '100%' }}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <div className="video-placeholder">
-                        <div className="video-loading-spinner"></div>
-                        <p>{t('products.loading') || 'Loading video...'}</p>
-                      </div>
-                    )
+                    <video
+                      ref={videoRef}
+                      src={currentMediaItem.src}
+                      className="main-image"
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      key={selectedMedia}
+                      style={{ maxWidth: '100%', maxHeight: '100%' }}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
                   ) : (
                     <img
                       src={currentMediaItem.src}

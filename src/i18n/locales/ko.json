@@ -7,7 +7,6 @@
   "products": {
     "title": "우리의 제품",
     "subtitle": "최신 기술로 구현된 강력한 솔루션들",
-    "loading": "영상 로딩 중...",
     "categories": {
       "projectManagement": "프로젝트관리",
       "webEditorIntegration": "웹 에디터 연동",

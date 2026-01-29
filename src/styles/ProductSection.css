@@ -50,29 +50,35 @@
 }
 
 .product-tab {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1rem;
   border: none;
   background-color: transparent;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 500;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   position: relative;
+  transform: scale(0.8);
 }
 
 .product-tab:hover {
   color: var(--text-primary);
   background-color: rgba(255, 107, 53, 0.1);
+  transform: scale(0.85);
 }
 
 .product-tab.active {
   background-color: var(--accent-orange);
   color: white;
   font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  transform: scale(1);
+  z-index: 1;
 }
 
 .scroll-fade-up {
@@ -230,41 +236,6 @@
 
 .main-image-container video:hover {
   cursor: default;
-}
-
-.video-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-secondary);
-  border-radius: 12px;
-  min-height: 300px;
-  color: var(--text-secondary);
-}
-
-.video-loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 4px solid rgba(255, 107, 53, 0.2);
-  border-top-color: var(--accent-orange);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.video-placeholder p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
 }
 
 .thumbnail-list {
@@ -440,12 +411,18 @@
 
   .product-tab {
     padding: 0.6rem 1rem;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     flex-shrink: 0;
     scroll-snap-align: start;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    transform: scale(0.85);
+  }
+
+  .product-tab.active {
+    font-size: 0.85rem;
+    transform: scale(1);
   }
 
   .product-gallery {
@@ -528,12 +505,18 @@
 
   .product-tab {
     padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     flex-shrink: 0;
     scroll-snap-align: start;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    transform: scale(0.8);
+  }
+
+  .product-tab.active {
+    font-size: 0.75rem;
+    transform: scale(1);
   }
 
   .product-gallery {

@@ -7,7 +7,6 @@
   "products": {
     "title": "Our Products",
     "subtitle": "Powerful solutions built with cutting-edge technology",
-    "loading": "Loading video...",
     "categories": {
       "projectManagement": "Project Management",
       "webEditorIntegration": "Web Editor Integration",
