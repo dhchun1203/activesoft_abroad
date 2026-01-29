@@ -7,33 +7,44 @@
   "products": {
     "title": "Our Products",
     "subtitle": "Powerful solutions built with cutting-edge technology",
+    "loading": "Loading video...",
     "categories": {
-      "category1": "Solution 1",
-      "category2": "Solution 2",
-      "category3": "Solution 3",
-      "category4": "Solution 4",
-      "category5": "Solution 5"
+      "projectManagement": "Project Management",
+      "webEditorIntegration": "Web Editor Integration",
+      "javascriptLibraryIntegration": "JavaScript Library Integration",
+      "reportGeneration": "Report Generation",
+      "googleChartsIntegration": "Google Charts Integration",
+      "fileUploadDownload": "File Upload/Download",
+      "captcha": "Captcha"
     },
     "descriptions": {
-      "category1": {
-        "title": "HTML5 UI Development Solution",
-        "description": "A professional solution that enables easy and rapid HTML5 development of complex business UIs through a GUI-based approach. Create web applications with an intuitive interface through WYSIWYG development methods, even without coding knowledge."
+      "projectManagement": {
+        "title": "Project Management",
+        "description": "Provides efficient project management capabilities. Manage projects systematically through file version control, file comparison, and project user management."
       },
-      "category2": {
-        "title": "Web Standards Compliant Solution",
-        "description": "A web standards-based solution compatible with all platforms and browsers. It can run immediately without plugins or additional downloads and automatically supports responsive design."
+      "webEditorIntegration": {
+        "title": "Web Editor Integration",
+        "description": "Supports integration with various web editors. Easily integrate and use various editors such as rich text editors and code editors."
       },
-      "category3": {
-        "title": "Rapid Development Environment",
-        "description": "Quickly implement forms, grids, charts, and more using built-in components and commands. Significantly reduce development time with automatic data binding capabilities."
+      "javascriptLibraryIntegration": {
+        "title": "JavaScript Library Integration",
+        "description": "Provides an interface environment to register and utilize external JavaScript libraries. Can integrate various libraries such as jQuery, React, and Vue."
       },
-      "category4": {
-        "title": "Enhanced Security Solution",
-        "description": "Security is strengthened through data encryption using the RSA algorithm. All communications with servers are encrypted, enabling secure data transmission and management."
+      "reportGeneration": {
+        "title": "Report Generation",
+        "description": "Easily create and generate reports in various formats. Can output reports in various formats such as PDF, Excel, and HTML."
       },
-      "category5": {
-        "title": "High-Performance Rendering Engine",
-        "description": "Rapidly render multiple controls and large-scale data with an optimized engine architecture. Efficiently handle complex business logic without compromising user experience."
+      "googleChartsIntegration": {
+        "title": "Google Charts Integration",
+        "description": "Easily implement various charts and graphs using the Google Charts API. Effectively convey information through data visualization."
+      },
+      "fileUploadDownload": {
+        "title": "File Upload/Download",
+        "description": "Provides file upload and download functionality. Multipart Upload and Zip file download are available."
+      },
+      "captcha": {
+        "title": "Captcha",
+        "description": "Provides Captcha functionality to enhance security. Prevents automated bot attacks and strengthens user authentication."
       }
     }
   },

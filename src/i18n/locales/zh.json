@@ -8,32 +8,42 @@
     "title": "我们的产品",
     "subtitle": "采用尖端技术构建的强大解决方案",
     "categories": {
-      "category1": "解决方案 1",
-      "category2": "解决方案 2",
-      "category3": "解决方案 3",
-      "category4": "解决方案 4",
-      "category5": "解决方案 5"
+      "projectManagement": "项目管理",
+      "webEditorIntegration": "Web编辑器集成",
+      "javascriptLibraryIntegration": "JavaScript库集成",
+      "reportGeneration": "报告生成",
+      "googleChartsIntegration": "Google图表集成",
+      "fileUploadDownload": "文件上传/下载",
+      "captcha": "Captcha"
     },
     "descriptions": {
-      "category1": {
-        "title": "HTML5 UI 开发解决方案",
-        "description": "通过基于GUI的方法，可以轻松快速地开发复杂的业务UI为HTML5的专业解决方案。通过WYSIWYG开发方式，即使没有编码知识，也可以使用直观的界面创建Web应用程序。"
+      "projectManagement": {
+        "title": "项目管理",
+        "description": "提供高效的项目管理功能。通过文件版本管理、文件比较、项目用户管理等方式，可以系统地管理项目。"
       },
-      "category2": {
-        "title": "符合Web标准的解决方案",
-        "description": "基于Web标准的解决方案，兼容所有平台和浏览器。无需插件或额外下载即可立即运行，并自动支持响应式设计。"
+      "webEditorIntegration": {
+        "title": "Web编辑器集成",
+        "description": "支持与各种Web编辑器的集成。可以轻松集成和使用富文本编辑器、代码编辑器等各种编辑器。"
       },
-      "category3": {
-        "title": "快速开发环境",
-        "description": "使用内置的各种组件和命令快速实现表单、网格、图表等。通过自动数据绑定功能大幅缩短开发时间。"
+      "javascriptLibraryIntegration": {
+        "title": "JavaScript库集成",
+        "description": "提供接口环境，可注册并利用外部JavaScript库。可以集成jQuery、React、Vue等各种库。"
       },
-      "category4": {
-        "title": "增强安全解决方案",
-        "description": "通过使用RSA算法的数据加密增强了安全性。与服务器的所有通信都经过加密，可以安全地传输和管理数据。"
+      "reportGeneration": {
+        "title": "报告生成",
+        "description": "可以轻松创建和生成各种格式的报告。可以以PDF、Excel、HTML等各种格式输出报告。"
       },
-      "category5": {
-        "title": "高性能渲染引擎",
-        "description": "通过优化的引擎架构快速渲染多个控件和大规模数据。在不影响用户体验的情况下高效处理复杂的业务逻辑。"
+      "googleChartsIntegration": {
+        "title": "Google图表集成",
+        "description": "利用Google Charts API可以轻松实现各种图表和图形。通过数据可视化有效地传达信息。"
+      },
+      "fileUploadDownload": {
+        "title": "文件上传/下载",
+        "description": "提供文件上传和下载功能。支持多文件选择及Zip文件下载。"
+      },
+      "captcha": {
+        "title": "Captcha",
+        "description": "提供Captcha功能以增强安全性。防止自动化机器人攻击并加强用户认证。"
       }
     }
   },

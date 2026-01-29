@@ -8,32 +8,42 @@
     "title": "私たちの製品",
     "subtitle": "最先端技術で構築された強力なソリューション",
     "categories": {
-      "category1": "ソリューション 1",
-      "category2": "ソリューション 2",
-      "category3": "ソリューション 3",
-      "category4": "ソリューション 4",
-      "category5": "ソリューション 5"
+      "projectManagement": "プロジェクト管理",
+      "webEditorIntegration": "Webエディタ連携",
+      "javascriptLibraryIntegration": "JavaScriptライブラリ連携",
+      "reportGeneration": "レポート作成",
+      "googleChartsIntegration": "Googleチャート連携",
+      "fileUploadDownload": "ファイルアップロード/ダウンロード",
+      "captcha": "Captcha"
     },
     "descriptions": {
-      "category1": {
-        "title": "HTML5 UI開発ソリューション",
-        "description": "GUIベースのアプローチにより、複雑な業務UIを簡単かつ迅速にHTML5で開発できる専門ソリューションです。WYSIWYG開発方式により、コーディング知識がなくても直感的なインターフェースでWebアプリケーションを作成できます。"
+      "projectManagement": {
+        "title": "プロジェクト管理",
+        "description": "効率的なプロジェクト管理機能を提供します。ファイルバージョン管理、ファイル比較、プロジェクトユーザー管理などを通じて、プロジェクトを体系的に管理できます。"
       },
-      "category2": {
-        "title": "Web標準準拠ソリューション",
-        "description": "すべてのプラットフォームとブラウザで互換性のあるWeb標準ベースのソリューションです。プラグインや追加ダウンロードなしで即座に実行可能で、レスポンシブデザインを自動的にサポートします。"
+      "webEditorIntegration": {
+        "title": "Webエディタ連携",
+        "description": "様々なWebエディタとの連携をサポートします。リッチテキストエディタ、コードエディタなど、様々なエディタを簡単に統合して使用できます。"
       },
-      "category3": {
-        "title": "迅速な開発環境",
-        "description": "組み込みの多様なコンポーネントとコマンドを活用して、フォーム、グリッド、チャートなどを迅速に実装できます。自動データバインディング機能により、開発時間を大幅に短縮できます。"
+      "javascriptLibraryIntegration": {
+        "title": "JavaScriptライブラリ連携",
+        "description": "外部JavaScriptライブラリを登録して活用できるインターフェース環境を提供します。jQuery、React、Vueなど、様々なライブラリを統合できます。"
       },
-      "category4": {
-        "title": "セキュリティ強化ソリューション",
-        "description": "RSAアルゴリズムを使用したデータ暗号化により、セキュリティが強化されました。サーバーとのすべての通信が暗号化され、安全にデータを送信および管理できます。"
+      "reportGeneration": {
+        "title": "レポート作成",
+        "description": "様々な形式のレポートを簡単に作成・生成できます。PDF、Excel、HTMLなど、様々な形式でレポートを出力できます。"
       },
-      "category5": {
-        "title": "高性能レンダリングエンジン",
-        "description": "最適化されたエンジンアーキテクチャにより、多数のコントロールと大規模データを迅速にレンダリングします。ユーザーエクスペリエンスを損なうことなく、複雑なビジネスロジックを効率的に処理できます。"
+      "googleChartsIntegration": {
+        "title": "Googleチャート連携",
+        "description": "Google Charts APIを活用して、様々なチャートやグラフを簡単に実装できます。データ可視化を通じて、情報を効果的に伝達できます。"
+      },
+      "fileUploadDownload": {
+        "title": "ファイルアップロード/ダウンロード",
+        "description": "ファイルアップロードおよびダウンロード機能を提供します。複数ファイル選択およびZipファイルダウンロードが可能です。"
+      },
+      "captcha": {
+        "title": "Captcha",
+        "description": "セキュリティを強化するためのCaptcha機能を提供します。自動化されたボット攻撃を防止し、ユーザー認証を強化できます。"
       }
     }
   },

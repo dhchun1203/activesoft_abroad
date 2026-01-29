@@ -7,33 +7,44 @@
   "products": {
     "title": "우리의 제품",
     "subtitle": "최신 기술로 구현된 강력한 솔루션들",
+    "loading": "영상 로딩 중...",
     "categories": {
-      "category1": "솔루션 1",
-      "category2": "솔루션 2",
-      "category3": "솔루션 3",
-      "category4": "솔루션 4",
-      "category5": "솔루션 5"
+      "projectManagement": "프로젝트관리",
+      "webEditorIntegration": "웹 에디터 연동",
+      "javascriptLibraryIntegration": "자바스크립트 라이브러리 연동",
+      "reportGeneration": "리포트 작성",
+      "googleChartsIntegration": "구글 차트 연동",
+      "fileUploadDownload": "파일 업로드/다운로드",
+      "captcha": "Captcha"
     },
     "descriptions": {
-      "category1": {
-        "title": "HTML5 UI 개발 솔루션",
-        "description": "복잡한 업무 UI를 GUI 기반으로 쉽고 빠르게 HTML5로 개발할 수 있는 전문 솔루션입니다. WYSIWYG 개발 방식을 통해 코딩 지식 없이도 직관적인 인터페이스로 웹 애플리케이션을 제작할 수 있습니다."
+      "projectManagement": {
+        "title": "프로젝트관리",
+        "description": "효율적인 프로젝트 관리 기능을 제공합니다. 파일 버전 관리, 파일 비교, 프로젝트 사용자 관리 등을 통해 프로젝트를 체계적으로 관리할 수 있습니다."
       },
-      "category2": {
-        "title": "웹 표준 준수 솔루션",
-        "description": "모든 플랫폼과 브라우저에서 호환되는 웹 표준 기반 솔루션입니다. 플러그인이나 추가 다운로드 없이 바로 실행 가능하며, 반응형 디자인을 자동으로 지원합니다."
+      "webEditorIntegration": {
+        "title": "웹 에디터 연동",
+        "description": "다양한 웹 에디터와의 연동을 지원합니다. 리치 텍스트 에디터, 코드 에디터 등 다양한 에디터를 쉽게 통합하여 사용할 수 있습니다."
       },
-      "category3": {
-        "title": "빠른 개발 환경",
-        "description": "내장된 다양한 컴포넌트와 명령어를 활용하여 폼, 그리드, 차트 등을 빠르게 구현할 수 있습니다. 자동 데이터 바인딩 기능으로 개발 시간을 대폭 단축할 수 있습니다."
+      "javascriptLibraryIntegration": {
+        "title": "자바스크립트 라이브러리 연동",
+        "description": "외부 자바스크립트 라이브러리를 등록하여 활용할 수 있도록 인터페이스 환경을 제공합니다. jQuery, React, Vue 등 다양한 라이브러리를 통합할 수 있습니다."
       },
-      "category4": {
-        "title": "보안 강화 솔루션",
-        "description": "RSA 알고리즘을 사용한 데이터 암호화로 보안성을 강화했습니다. 서버와의 모든 통신이 암호화되어 안전하게 데이터를 전송하고 관리할 수 있습니다."
+      "reportGeneration": {
+        "title": "리포트 작성",
+        "description": "다양한 형식의 리포트를 쉽게 작성하고 생성할 수 있습니다. PDF, Excel, HTML 등 다양한 형식으로 리포트를 출력할 수 있습니다."
       },
-      "category5": {
-        "title": "고성능 렌더링 엔진",
-        "description": "최적화된 엔진 아키텍처로 다수의 컨트롤과 대용량 데이터를 빠르게 렌더링합니다. 사용자 경험을 해치지 않으면서도 복잡한 비즈니스 로직을 효율적으로 처리할 수 있습니다."
+      "googleChartsIntegration": {
+        "title": "구글 차트 연동",
+        "description": "Google Charts API를 활용하여 다양한 차트와 그래프를 쉽게 구현할 수 있습니다. 데이터 시각화를 통해 정보를 효과적으로 전달할 수 있습니다."
+      },
+      "fileUploadDownload": {
+        "title": "파일 업로드/다운로드",
+        "description": "파일 업로드 및 다운로드 기능을 제공합니다. 멀티 파트 업로드 및 Zip 파일 다운로드가 가능합니다."
+      },
+      "captcha": {
+        "title": "Captcha",
+        "description": "보안을 강화하기 위한 Captcha 기능을 제공합니다. 자동화된 봇 공격을 방지하고 사용자 인증을 강화할 수 있습니다."
       }
     }
   },
