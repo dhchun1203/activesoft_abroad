@@ -103,6 +103,38 @@
   transform: translateY(0);
 }
 
+.mail-client-notice {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mail-client-text {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.mail-client-link {
+  color: var(--accent-orange);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+
+.mail-client-link:hover {
+  color: var(--accent-red);
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .contact-section {
     padding: 3rem 1.5rem;
@@ -133,6 +165,11 @@
   .submit-btn {
     font-size: 1rem;
     padding: 0.875rem 1.75rem;
+  }
+
+  .mail-client-text,
+  .mail-client-link {
+    font-size: 0.85rem;
   }
 }
 
@@ -173,6 +210,15 @@
     font-size: 0.95rem;
     padding: 0.8rem 1.5rem;
     width: 100%;
+  }
+
+  .mail-client-notice {
+    padding: 0.65rem 0.85rem;
+  }
+
+  .mail-client-text,
+  .mail-client-link {
+    font-size: 0.8rem;
   }
 }
 

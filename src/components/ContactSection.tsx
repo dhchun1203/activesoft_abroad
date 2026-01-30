@@ -11,6 +11,7 @@ const LANG_MAP: { [key: string]: string } = {
 } as const;
 
 const EMAIL_TO = 'support@activesoft.co.kr';
+const MAIL_HANDLER_HELP_URL = 'https://support.google.com/chrome/answer/95417';
 
 const ContactSection: FC = () => {
   const { t, i18n } = useTranslation();
@@ -130,7 +131,17 @@ const ContactSection: FC = () => {
               required
             />
           </div>
-          
+          <div className="mail-client-notice">
+            <p className="mail-client-text">{t('contact.mailClientNotice')}</p>
+            <a
+              className="mail-client-link"
+              href={MAIL_HANDLER_HELP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('contact.mailClientLink')}
+            </a>
+          </div>
           <button type="submit" className="submit-btn">
             {t('contact.submit')}
           </button>

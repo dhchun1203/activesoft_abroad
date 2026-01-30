@@ -113,7 +113,9 @@
     "namePlaceholder": "请输入您的姓名",
     "emailPlaceholder": "请输入您的电子邮件",
     "messagePlaceholder": "请输入您的消息",
-    "successMessage": "已打开电子邮件客户端。请点击发送以完成。"
+    "successMessage": "已打开电子邮件客户端。请点击发送以完成。",
+    "mailClientNotice": "需要连接邮件应用才能立即发送。",
+    "mailClientLink": "查看邮件应用连接指南"
   },
   "language": "语言",
   "darkMode": "深色模式",

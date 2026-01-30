@@ -113,7 +113,9 @@
     "namePlaceholder": "Enter your name",
     "emailPlaceholder": "Enter your email",
     "messagePlaceholder": "Enter your message",
-    "successMessage": "Your email client has been opened. Please click send to complete."
+    "successMessage": "Your email client has been opened. Please click send to complete.",
+    "mailClientNotice": "A mail app must be connected to send immediately.",
+    "mailClientLink": "View mail app connection guide"
   },
   "language": "Language",
   "darkMode": "Dark Mode",

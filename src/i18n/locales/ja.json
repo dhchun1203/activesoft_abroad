@@ -113,7 +113,9 @@
     "namePlaceholder": "お名前を入力してください",
     "emailPlaceholder": "メールアドレスを入力してください",
     "messagePlaceholder": "メッセージを入力してください",
-    "successMessage": "メールクライアントが開きました。送信ボタンをクリックして完了してください。"
+    "successMessage": "メールクライアントが開きました。送信ボタンをクリックして完了してください。",
+    "mailClientNotice": "すぐに送信するにはメールアプリの連携が必要です。",
+    "mailClientLink": "メールアプリ連携ガイドを見る"
   },
   "language": "言語",
   "darkMode": "ダークモード",

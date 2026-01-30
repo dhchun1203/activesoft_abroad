@@ -38,7 +38,15 @@ const PRODUCT_MEDIA: Record<string, MediaItem[]> = {
   javascriptLibraryIntegration: [
     {
       type: 'image',
-      src: import.meta.env.BASE_URL + 'images/3.png',
+      src: import.meta.env.BASE_URL + 'images/3_1.png',
+    },
+    {
+      type: 'image',
+      src: import.meta.env.BASE_URL + 'images/3_2.png',
+    },
+    {
+      type: 'image',
+      src: import.meta.env.BASE_URL + 'images/3_3.png',
     },
   ],
   reportGeneration: [
@@ -50,11 +58,7 @@ const PRODUCT_MEDIA: Record<string, MediaItem[]> = {
   googleChartsIntegration: [
     {
       type: 'image',
-      src: 'https://via.placeholder.com/800x500/3498DB/FFFFFF?text=Google+Charts+Integration',
-    },
-    {
-      type: 'image',
-      src: 'https://via.placeholder.com/800x500/3498DB/FFFFFF?text=Google+Charts+Integration+2',
+      src: import.meta.env.BASE_URL + 'images/googleChart_sample.png',
     },
   ],
   fileUploadDownload: [
@@ -80,9 +84,13 @@ const ProductSection: FC = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<string>(PRODUCT_CATEGORIES[0]);
   const [selectedMedia, setSelectedMedia] = useState(0);
+  const [prevSelectedMedia, setPrevSelectedMedia] = useState(0);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const slideIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const slideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation({ triggerOnce: true });
   const { elementRef: galleryRef, isVisible: galleryVisible } = useScrollAnimation({ triggerOnce: true, threshold: 0.2 });
 
@@ -90,14 +98,62 @@ const ProductSection: FC = () => {
   const currentMediaItem = currentMedia[selectedMedia];
   const hasMultipleMedia = currentMedia.length > 1;
 
-  // 비디오 전체화면 이벤트 처리
+  // 비디오 전체화면 이벤트 처리 및 뷰포트 밖 비디오 일시정지
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    const container = videoContainerRef.current;
+    if (!video || !container || currentMediaItem?.type !== 'video') return;
 
     const handleFullscreenChange = () => {
       // 전체화면 상태 변경 시 필요한 처리
     };
+
+    let isScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+
+    // 스크롤 중 비디오 일시정지
+    const handleScroll = () => {
+      if (!isScrolling && !video.paused) {
+        isScrolling = true;
+        video.pause();
+      }
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+    };
+
+    // 뷰포트 밖의 비디오 일시정지로 성능 최적화
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.7 && !isScrolling) {
+            // 뷰포트에 70% 이상 들어오고 스크롤 중이 아니면 재생
+            if (video.paused && video.readyState >= 2) {
+              video.play().catch(() => {
+                // 자동 재생이 차단된 경우 무시
+              });
+            }
+          } else {
+            // 뷰포트 밖으로 나가거나 70% 미만이면 일시정지
+            if (!video.paused) {
+              video.pause();
+            }
+            // 비디오를 처음으로 되돌려 메모리 절약
+            if (entry.intersectionRatio === 0) {
+              video.currentTime = 0;
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-30% 0px -30% 0px', // 상하 30% 여유를 두고 더 엄격하게
+        threshold: [0, 0.7, 1],
+      }
+    );
+
+    observer.observe(container);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
@@ -105,12 +161,19 @@ const ProductSection: FC = () => {
     document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
     return () => {
+      clearTimeout(scrollTimeout);
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
       document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
       document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+      // 정리 시 비디오 일시정지
+      if (!video.paused) {
+        video.pause();
+      }
     };
-  }, [currentMediaItem]);
+  }, [currentMediaItem, activeTab, selectedMedia]);
 
   // 탭 컨테이너 스크롤을 활성 탭이 보이도록 조정 (모바일에서만)
   useEffect(() => {
@@ -154,6 +217,55 @@ const ProductSection: FC = () => {
     setSelectedMedia(0); // 탭 변경 시 첫 번째 미디어로 리셋
   }, []);
 
+  // JavaScript Library Integration 항목의 이미지 자동 슬라이드
+  useEffect(() => {
+    const currentMedia = PRODUCT_MEDIA[activeTab] || [];
+    const isJavaScriptLibrary = activeTab === 'javascriptLibraryIntegration';
+    
+    // JavaScript Library Integration이고 이미지가 여러 개일 때만 자동 슬라이드
+    if (isJavaScriptLibrary && currentMedia.length > 1 && !isImageModalOpen) {
+      // 기존 인터벌/타임아웃 정리
+      if (slideIntervalRef.current) {
+        clearInterval(slideIntervalRef.current);
+        slideIntervalRef.current = null;
+      }
+      if (slideTimeoutRef.current) {
+        clearTimeout(slideTimeoutRef.current);
+        slideTimeoutRef.current = null;
+      }
+      
+      // 4초 간격으로 자동 순환
+      slideIntervalRef.current = setInterval(() => {
+        setSelectedMedia((prev) => {
+          const next = prev < currentMedia.length - 1 ? prev + 1 : 0;
+          setPrevSelectedMedia(prev);
+          return next;
+        });
+      }, 4000);
+      
+      return () => {
+        if (slideIntervalRef.current) {
+          clearInterval(slideIntervalRef.current);
+          slideIntervalRef.current = null;
+        }
+        if (slideTimeoutRef.current) {
+          clearTimeout(slideTimeoutRef.current);
+          slideTimeoutRef.current = null;
+        }
+      };
+    } else {
+      // 다른 탭이거나 이미지가 하나일 때는 인터벌/타임아웃 정리
+      if (slideIntervalRef.current) {
+        clearInterval(slideIntervalRef.current);
+        slideIntervalRef.current = null;
+      }
+      if (slideTimeoutRef.current) {
+        clearTimeout(slideTimeoutRef.current);
+        slideTimeoutRef.current = null;
+      }
+    }
+  }, [activeTab, isImageModalOpen]);
+
   const handlePreviousMedia = useCallback(() => {
     setSelectedMedia((prev) => (prev > 0 ? prev - 1 : currentMedia.length - 1));
   }, [currentMedia.length]);
@@ -163,11 +275,45 @@ const ProductSection: FC = () => {
   }, [currentMedia.length]);
 
   const handleMediaSelect = useCallback((index: number) => {
+    setPrevSelectedMedia(selectedMedia);
     setSelectedMedia(index);
-  }, []);
+    // JavaScript Library Integration의 경우 자동 슬라이드 재시작
+    if (activeTab === 'javascriptLibraryIntegration') {
+      // 기존 인터벌/타임아웃 정리
+      if (slideIntervalRef.current) {
+        clearInterval(slideIntervalRef.current);
+        slideIntervalRef.current = null;
+      }
+      if (slideTimeoutRef.current) {
+        clearTimeout(slideTimeoutRef.current);
+        slideTimeoutRef.current = null;
+      }
+      // 4초 후 다시 자동 슬라이드 시작
+      const currentMedia = PRODUCT_MEDIA[activeTab] || [];
+      if (currentMedia.length > 1) {
+        slideTimeoutRef.current = setTimeout(() => {
+          slideIntervalRef.current = setInterval(() => {
+            setSelectedMedia((prev) => {
+              const next = prev < currentMedia.length - 1 ? prev + 1 : 0;
+              setPrevSelectedMedia(prev);
+              return next;
+            });
+          }, 4000);
+        }, 4000);
+      }
+    }
+  }, [activeTab, selectedMedia]);
 
   const handleMainImageClick = useCallback(() => {
     if (currentMediaItem && currentMediaItem.type === 'image') {
+      if (slideIntervalRef.current) {
+        clearInterval(slideIntervalRef.current);
+        slideIntervalRef.current = null;
+      }
+      if (slideTimeoutRef.current) {
+        clearTimeout(slideTimeoutRef.current);
+        slideTimeoutRef.current = null;
+      }
       setIsImageModalOpen(true);
     }
   }, [currentMediaItem]);
@@ -210,8 +356,11 @@ const ProductSection: FC = () => {
             </div>
             {currentMediaItem && (
               <div className="media-wrapper">
-                <div className={`main-image-container ${currentMediaItem.type === 'video' ? 'video-container' : ''}`}>
-                  {hasMultipleMedia && (
+                <div 
+                  ref={videoContainerRef}
+                  className={`main-image-container ${currentMediaItem.type === 'video' ? 'video-container' : ''} ${activeTab === 'javascriptLibraryIntegration' && hasMultipleMedia ? 'image-slide-container' : ''}`}
+                >
+                  {hasMultipleMedia && activeTab !== 'javascriptLibraryIntegration' && activeTab !== 'fileUploadDownload' && (
                     <button
                       className="media-nav-button media-nav-prev"
                       onClick={handlePreviousMedia}
@@ -230,12 +379,26 @@ const ProductSection: FC = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
                       key={selectedMedia}
                       style={{ maxWidth: '100%', maxHeight: '100%' }}
                     >
                       Your browser does not support the video tag.
                     </video>
+                  ) : activeTab === 'javascriptLibraryIntegration' && hasMultipleMedia ? (
+                    <div className="image-slide-wrapper">
+                      {currentMedia.map((media, index) => (
+                        <img
+                          key={index}
+                          src={media.src}
+                          alt={`${t(`products.categories.${activeTab}`)} ${index + 1}`}
+                          className={`main-image slide-image ${selectedMedia === index ? 'active' : prevSelectedMedia === index ? 'prev' : ''}`}
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          onClick={handleMainImageClick}
+                          style={{ cursor: 'pointer' }}
+                        />
+                      ))}
+                    </div>
                   ) : (
                     <img
                       src={currentMediaItem.src}
@@ -247,7 +410,7 @@ const ProductSection: FC = () => {
                       key={selectedMedia}
                     />
                   )}
-                  {hasMultipleMedia && (
+                  {hasMultipleMedia && activeTab !== 'javascriptLibraryIntegration' && activeTab !== 'fileUploadDownload' && (
                     <button
                       className="media-nav-button media-nav-next"
                       onClick={handleNextMedia}

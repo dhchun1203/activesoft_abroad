@@ -115,6 +115,8 @@
   gap: 3rem;
   align-items: center;
   animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  contain: layout style;
+  will-change: contents;
 }
 
 .product-description {
@@ -162,11 +164,13 @@
   position: relative;
   padding: 2rem 1rem;
   box-sizing: border-box;
+  contain: layout style paint;
 }
 
 .main-image-container.video-container {
   overflow: visible;
   padding: 0;
+  contain: layout style;
 }
 
 .dark .main-image-container {
@@ -178,13 +182,26 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
-.main-image:hover {
+.main-image-container video {
+  will-change: auto;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  contain: layout style paint;
+}
+
+.main-image-container video[paused] {
+  pointer-events: none;
+}
+
+.main-image:hover:not(video) {
   transform: scale3d(1.02, 1.02, 1);
   cursor: pointer;
 }
@@ -236,6 +253,44 @@
 
 .main-image-container video:hover {
   cursor: default;
+}
+
+.image-slide-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-slide-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.slide-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide-image.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.slide-image.prev {
+  transform: translateX(-100%);
+  opacity: 0;
 }
 
 .thumbnail-list {

@@ -312,6 +312,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  order: 2;
 }
 
 .side-menu-controls .dark-mode-toggle-container {
@@ -324,6 +325,32 @@
 
 .side-menu-controls .language-selector {
   flex-shrink: 0;
+}
+
+.side-menu-nav {
+  order: 3;
+}
+
+@media (max-width: 768px) {
+  .side-menu {
+    flex-direction: column;
+  }
+
+  .side-menu-header {
+    order: 1;
+  }
+
+  .side-menu-controls {
+    order: 2;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .side-menu-nav {
+    order: 3;
+    flex: 1;
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: 1024px) {
